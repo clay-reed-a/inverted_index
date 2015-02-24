@@ -1,4 +1,4 @@
 class Entry < ActiveRecord::Base
-  has_one :word
-  has_one :listing 
+  belongs_to :word
+  belongs_to :listing 
 end

@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+feed_url = 
+'http://newyork.craigslist.org/search/vga?format=rss' 
+
+Listing
+.update_from_feed feed_url
