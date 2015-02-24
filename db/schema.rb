@@ -11,13 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150224180614) do
+ActiveRecord::Schema.define(version: 20150224183322) do
 
   create_table "entries", force: :cascade do |t|
     t.integer  "listing_id"
     t.integer  "word_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "section"
+    t.integer  "location"
   end
 
   create_table "listings", force: :cascade do |t|
