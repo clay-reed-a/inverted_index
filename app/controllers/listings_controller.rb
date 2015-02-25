@@ -1,4 +1,6 @@
 class ListingsController < ApplicationController
+  
+
   def search
     # god method  
   end
