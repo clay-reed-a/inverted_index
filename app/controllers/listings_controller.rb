@@ -2,7 +2,9 @@ class ListingsController < ApplicationController
   
 
   def search
-    # god method  
+    # god method 
+    query_string = params[:q]
+    binding.pry  
   end
 
   def index

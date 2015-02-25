@@ -54,6 +54,20 @@ controllers.controller('MainController',
     $scope.queryString = '';
     $scope.searchResults = null; 
 
+    $scope.searchListings = function(queryString){
+      console.log(queryString);
+      Listings.searchListings(queryString)
+        .then(
+          function(data,status,config,headers)
+          {
+            console.log('GET REQUEST MADE!');
+          },
+          function(data,status,config,headers){
+            console.log('Problems!');
+          }
+        )
+    };
+
     $scope.consoleLogListings = function(){
       Listings.indexListings()
         .then(
