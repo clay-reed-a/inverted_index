@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require lodash  
 //= require angular/angular
 //= require angular-sanitize/angular-sanitize 
+//= require allmighty-autocomplete/script/autocomplete.js
 //= require_tree .

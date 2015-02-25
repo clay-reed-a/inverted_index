@@ -66,6 +66,8 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (1.8.2)
+    lodash-rails (2.4.1)
+      railties (>= 3.1)
     loofah (2.0.1)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -166,6 +168,7 @@ DEPENDENCIES
   byebug
   feedjira
   jquery-rails
+  lodash-rails
   oj
   pg
   pry-rails

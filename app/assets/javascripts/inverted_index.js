@@ -2,6 +2,7 @@
 
 var invertedIndex = angular.module('invertedIndex', [
   'ngSanitize',
+  'autocomplete',
   'controllers',
   'services', 
   'filters']
@@ -10,6 +11,29 @@ var invertedIndex = angular.module('invertedIndex', [
 /* SERVICES */
 
 var services = angular.module('services', []);
+
+services.service('Words', 
+  function($http){
+    this.indexWords = function(){
+      return $http(
+        {
+          method: 'GET',
+          url: 'api/words.json'
+        }
+      );
+    };
+
+    this.showWord = function(wordId){
+      return $http(
+        {
+          method: 'GET',
+          url: 'api/words/'+wordId+'.json'
+        }
+      );
+    };
+
+    return this; 
+  });
 
 services.service('Listings', 
   function($http){
@@ -52,17 +76,35 @@ services.service('Listings',
 var controllers = angular.module('controllers', []);
 
 controllers.controller('MainController', 
-  function($scope, Listings){
+  function($scope, Listings, Words){
     $scope.queryString = '';
     $scope.searchResults = null; 
+    $scope.words = []; 
+
+    Words.indexWords()
+      .then(
+        function(data,status,config,headers)
+        {
+          
+          $scope.words = _.pluck(data.data, 'content'); 
+          console.log(JSON.stringify($scope.words));
+        },
+        function(data,status,config,headers)
+        {
+          console.log('Problems!');
+        }
+      );
 
     $scope.searchListings = function(queryString){
-      console.log(queryString);
+ 
       Listings.searchListings(queryString)
         .then(
           function(data,status,config,headers)
           {
-            
+            var resultsSection = 
+              document.querySelector('.results-section');
+            angular.element(resultsSection).removeClass('hidden');
+
             $scope.searchResults = data.data;
 
           },
@@ -103,7 +145,7 @@ filters.filter('sanitize', ['$sce', function($sce) {
 filters.filter('removeContactInfo', [function(){
   return function(craigslistListing){
     // turn <a YIP YIP >show contact info</a>
-    // [see Craigslist]
+    // into [see Craigslist]
     contactInfoREGEX = /<a.+>show contact info<\/a>/;
     return craigslistListing.replace(contactInfoREGEX, '[see Craigslist]');
   }

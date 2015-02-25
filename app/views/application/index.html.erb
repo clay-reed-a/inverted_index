@@ -3,16 +3,17 @@
     <header>
       <h1>Inverted Indexing</h1>
     </header>
-    <div>
-      <input ng-model="queryString">
-      <button ng-click="searchListings(queryString)">Search</button>
-    </div>
-    <section ng-show="searchResults" class="results-section">
-      <h1>I got results!</h1>
+    <section class="search">
+      <h2>Search</h2>
+      <autocomplete data="words" ng-model="queryString"></autocomplete>
+      <button class="search-button" ng-click="searchListings(queryString)">Search</button>
+    </section>
+    <section ng-show="searchResults" class="results-section hidden">
+      <h2>Results</h2>
       <ul class="results-list">
         <li ng-repeat="result in searchResults">
           <section>
-            <h2 ng-bind-html="result.title | sanitize"></h2> 
+            <h3 ng-bind-html="result.title | sanitize"></h3> 
             <p><span ng-bind-html="result.summary | removeContactInfo "></span> <span>Interested? <a href="{{result.url}}">Read the Full Listing</a></span></p>
           </section>
         </li>
