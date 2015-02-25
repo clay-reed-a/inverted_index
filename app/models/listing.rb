@@ -6,7 +6,7 @@ class Listing < ActiveRecord::Base
 
   after_create :index_listing 
 
-  TOKENIZE_THESE_ATTRS =  [
+  TOKENIZE_THESE_ATTRS = [
     'title', 'summary'
   ]
 
@@ -18,10 +18,9 @@ class Listing < ActiveRecord::Base
       unless exists? :url => entry.url 
         create!(
           :publication_date => entry.published,
-          :summary => entry.summary, 
-          :url => entry.url,
-          :title => entry.title 
-          )
+                   :summary => entry.summary, 
+                       :url => entry.url,
+                     :title => entry.title)
       end 
     end
   end

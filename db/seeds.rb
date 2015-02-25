@@ -10,4 +10,4 @@ feed_url =
 'http://newyork.craigslist.org/search/vga?format=rss' 
 
 Listing
-.update_from_feed feed_url
+.update_from_feed(feed_url) 
