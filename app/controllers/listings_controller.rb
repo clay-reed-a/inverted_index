@@ -7,9 +7,11 @@ class ListingsController < ApplicationController
     words = query_string.downcase.split ' '
 
     word_models = words.map { |word| Word.find_by(content: word) }
-    listings_for_words = word_models.map &:listings
+    listings_for_words = word_models.map &:uniq_listings
     listings_with_all_words = listings_for_words.reduce &:&
-    @listings = listings_with_all_words.uniq
+    @listings = listings_with_all_words 
+
+    binding.pry 
     
     render :index 
   end

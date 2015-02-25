@@ -10,8 +10,6 @@ class Listing < ActiveRecord::Base
     'title', 'summary'
   ]
 
-  
-
   def self.update_from_feed(feed_url)
     feed = Feedjira::Feed.fetch_and_parse(feed_url)
     feed.entries.each do |entry|
