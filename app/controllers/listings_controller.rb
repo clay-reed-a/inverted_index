@@ -1,10 +1,13 @@
 class ListingsController < ApplicationController
+  def search
+    # god method  
+  end
+
   def index
+    @listings = Listing.all 
   end
 
   def show
-  end
-
-  def search
+    @listing = Listing.find(params[:id])
   end
 end
