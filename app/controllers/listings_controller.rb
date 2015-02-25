@@ -4,7 +4,14 @@ class ListingsController < ApplicationController
   def search
     # god method 
     query_string = params[:q]
-    binding.pry  
+    words = query_string.downcase.split ' '
+
+    word_models = words.map { |word| Word.find_by(content: word) }
+    listings_for_words = word_models.map &:listings
+    listings_with_all_words = listings_for_words.reduce &:&
+    @listings = listings_with_all_words.uniq
+    
+    render :index 
   end
 
   def index
