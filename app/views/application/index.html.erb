@@ -1,1 +1,14 @@
-<h1>Hello, Inverted Index!</h1>
+<div ng-app="invertedIndex">
+  <div>
+    <div>
+      <h1 ng-if="name">Hello, {{name}}</h1>
+    </div>
+    <div>
+      <form>
+        <div>
+          <input placeholder="Enter your name" autofocus ng-model="name">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
