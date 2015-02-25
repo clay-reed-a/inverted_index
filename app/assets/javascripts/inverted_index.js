@@ -1,8 +1,10 @@
 /* InvertedIndex APP */
 
 var invertedIndex = angular.module('invertedIndex', [
+  'ngSanitize',
   'controllers',
-  'services']
+  'services', 
+  'filters']
 );
 
 /* SERVICES */
@@ -60,7 +62,9 @@ controllers.controller('MainController',
         .then(
           function(data,status,config,headers)
           {
-            console.log('GET REQUEST MADE!');
+            
+            $scope.searchResults = data.data;
+
           },
           function(data,status,config,headers){
             console.log('Problems!');
@@ -85,3 +89,22 @@ controllers.controller('MainController',
     };
   }
 );
+
+//* FILTERS */
+
+var filters = angular.module('filters', []);
+
+filters.filter('sanitize', ['$sce', function($sce) {
+  return function(htmlCode){
+    return $sce.trustAsHtml(htmlCode);
+  }
+}]);
+
+filters.filter('removeContactInfo', [function(){
+  return function(craigslistListing){
+    // turn <a YIP YIP >show contact info</a>
+    // [see Craigslist]
+    contactInfoREGEX = /<a.+>show contact info<\/a>/;
+    return craigslistListing.replace(contactInfoREGEX, '[see Craigslist]');
+  }
+}]);
