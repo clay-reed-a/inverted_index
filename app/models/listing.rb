@@ -11,7 +11,9 @@ class Listing < ActiveRecord::Base
   ]
 
   def self.update_from_feed(feed_url)
-    feed = Feedjira::Feed.fetch_and_parse(feed_url)
+    ua = 'Mozilla/5.0 (Windows NT 5.1; rv:31.0) Gecko/20100101 Firefox/31.0'
+    feed = Feedjira::Feed.fetch_and_parse(feed_url,
+      user_agent: ua)
     binding.pry 
     feed.entries.each do |entry|
       unless exists? :url => entry.url 

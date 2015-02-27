@@ -20,6 +20,7 @@ gem 'pry-rails'
 gem 'awesome_print'
 
 group :production do 
+  gem 'rails_12factor'
   gem 'pg'
 end 
 
