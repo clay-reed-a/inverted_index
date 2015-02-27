@@ -169,3 +169,10 @@ filters.filter('removeContactInfo', [function(){
     return craigslistListing.replace(contactInfoREGEX, '[see Craigslist]');
   }
 }]);
+
+filters.filter('formatSummaryEnd', [function(){
+  return function(craigslistListing){
+    // remove "[...]" 
+    return craigslistListing.replace('[...]', '');
+  }
+}])

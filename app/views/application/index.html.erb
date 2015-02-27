@@ -23,7 +23,7 @@
         <li ng-repeat="result in searchResults">
           <section class="result_section">
             <h3 ng-bind-html="result.title | sanitize"></h3> 
-            <p><span ng-bind-html="result.summary | removeContactInfo "></span> <span>Interested? <a href="{{result.url}}">Read the Full Listing</a></span></p>
+            <p><span ng-bind-html="result.summary | removeContactInfo | formatSummaryEnd"></span> <span>Interested? <a href="{{result.url}}">Read the Full Listing</a></span></p>
           </section>
         </li>
       </ul>

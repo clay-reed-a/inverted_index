@@ -19,6 +19,8 @@
 
 body {
   font-family: 'Jura';
+  background-color: #BDDE14; 
+  color: #143815;
 }
 
 section.main {
@@ -31,15 +33,23 @@ div.controls_default {
 
 div.controls_results {
   width: 100vw;
-  background-color: white;
+  background-color: #BDDE14;
   position: fixed;
   top: 0;
 }
 
 nav a {
-  text-decoration: none;
-  color: black;
   font-size: 1.5em;
+}
+
+a {
+  text-decoration: none;
+  color: #266025;
+}
+
+a:hover {
+  color: #306A30;
+  text-decoration: underline;
 }
 
 * {
@@ -120,7 +130,8 @@ input.search_input,
 button.search_button {
   float: left;
   height: 30px;
-  /*vertical-align: top;*/ 
+  background-color: #BDDE14; 
+  color: #143815; 
 }
 
 input.search_input {

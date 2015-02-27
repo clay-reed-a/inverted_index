@@ -12,6 +12,7 @@ class Listing < ActiveRecord::Base
 
   def self.update_from_feed(feed_url)
     feed = Feedjira::Feed.fetch_and_parse(feed_url)
+    binding.pry 
     feed.entries.each do |entry|
       unless exists? :url => entry.url 
         create!(
