@@ -1,18 +1,27 @@
 <main ng-app="invertedIndex">
   <section class="main" ng-controller="MainController">
-    <header>
-      <h1>Inverted Indexing</h1>
-    </header>
-    <section class="search">
-      <h2>Search</h2>
-      <autocomplete data="words" ng-model="queryString"></autocomplete>
-      <button class="search-button" ng-click="searchListings(queryString)">Search</button>
-    </section>
-    <section ng-show="searchResults" class="results-section hidden">
+    <div class="controls_default controls">
+      <header class="main">
+        <h1>Inverted Indexing</h1>
+        <nav>
+          <ul>
+            <li><a href="about">About</a></li>
+          </ul>
+        </nav>
+      </header>
+      <section class="search_default search">
+        <h2>Craigslists Videogame Search</h2>
+        <div class="search_bar">
+          <input class="search_input" ng-model="queryString">
+          <button class="search_button" ng-click="searchListings(queryString)">Search</button>
+        </div>
+      </section>
+    </div>
+    <section ng-show="searchResults" class="results_section hidden">
       <h2>Results</h2>
-      <ul class="results-list">
+      <ul class="results_list">
         <li ng-repeat="result in searchResults">
-          <section>
+          <section class="result_section">
             <h3 ng-bind-html="result.title | sanitize"></h3> 
             <p><span ng-bind-html="result.summary | removeContactInfo "></span> <span>Interested? <a href="{{result.url}}">Read the Full Listing</a></span></p>
           </section>

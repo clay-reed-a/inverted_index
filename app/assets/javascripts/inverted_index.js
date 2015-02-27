@@ -101,9 +101,28 @@ controllers.controller('MainController',
         .then(
           function(data,status,config,headers)
           {
+            // some DOM manipulation to hack styles in 
+            var searchSection = 
+              document.querySelector('section.search');
+
+            angular.element(searchSection)
+              .removeClass('search_default') 
+              .addClass('search_results');
+
+            var controls = 
+              document.querySelector('div.controls');
+
+            angular.element(controls)
+              .removeClass('controls_default')
+              .addClass('controls_results'); 
+
             var resultsSection = 
-              document.querySelector('.results-section');
-            angular.element(resultsSection).removeClass('hidden');
+              document.querySelector('.results_section');
+
+            angular.element(resultsSection)
+              .removeClass('hidden');
+
+            /* Update Data Model */
 
             $scope.searchResults = data.data;
 
