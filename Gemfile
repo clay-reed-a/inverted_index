@@ -14,6 +14,8 @@ gem 'rabl-rails'
 gem 'oj'
 gem 'responders'
 
+gem 'yaml_db' 
+
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'pry-rails'
