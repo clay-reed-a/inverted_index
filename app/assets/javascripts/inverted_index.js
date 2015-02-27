@@ -13,7 +13,7 @@ var invertedIndex = angular.module('invertedIndex', [
 var services = angular.module('services', []);
 
 services.service('Words', 
-  function($http){
+  ['$http', function($http){
     this.indexWords = function(){
       return $http(
         {
@@ -33,10 +33,10 @@ services.service('Words',
     };
 
     return this; 
-  });
+  }]);
 
 services.service('Listings', 
-  function($http){
+  ['$http', function($http){
     this.searchListings = function(queryString){
       return $http(
         {
@@ -69,14 +69,15 @@ services.service('Listings',
     }
 
     return this; 
-  });
+  }]);
 
 /* CONTROLLERS */
 
 var controllers = angular.module('controllers', []);
 
 controllers.controller('MainController', 
-  function($scope, Listings, Words){
+  ['$scope', 'Listings', 'Words', 
+    function($scope, Listings, Words){
     $scope.queryString = '';
     $scope.searchResults = null; 
     $scope.words = []; 
@@ -149,7 +150,7 @@ controllers.controller('MainController',
         )
     };
   }
-);
+]);
 
 //* FILTERS */
 
