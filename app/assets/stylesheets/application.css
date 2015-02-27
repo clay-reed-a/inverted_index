@@ -160,3 +160,7 @@ section.result_section p {
   padding: 1em;
   max-width: 40em;
 }
+
+span.follow_through {
+  font-weight: 700;
+}
