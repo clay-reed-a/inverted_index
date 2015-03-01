@@ -88,7 +88,7 @@ controllers.controller('MainController',
         {
           
           $scope.words = _.pluck(data.data, 'content'); 
-          console.log(JSON.stringify($scope.words));
+    
         },
         function(data,status,config,headers)
         {

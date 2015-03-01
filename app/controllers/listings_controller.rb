@@ -4,10 +4,15 @@ class ListingsController < ApplicationController
   def search
     # god method 
     query_string = params[:q]
-    words = query_string.downcase.split ' '
+    words = query_string.downcase.remove(/[[:punct:]]/, '').split ' '
 
     word_models = words.map { |word| Word.find_by(content: word) }
-    entries_for_words = word_models.map &:entries
+
+    # if any are nil, we know an empty array would result 
+    render(json: []) and return unless word_models.all? 
+
+    entries_for_words = word_models.map &:entries 
+
     listings_for_words = entries_for_words.map { |entries|
       rank_results_by_frequency(entries)  
     }
