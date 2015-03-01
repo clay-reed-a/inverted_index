@@ -2,7 +2,7 @@
   <section class="main" ng-controller="MainController">
     <div class="controls_default controls">
       <header class="main">
-        <h1>Inverted Indexing</h1>
+        <h1>Inverted <br>Indexing</h1>
         <nav>
           <ul>
             <li><a href="about">About</a></li>
@@ -10,15 +10,15 @@
         </nav>
       </header>
       <section class="search_default search">
-        <h2>Craigslists Videogame Search</h2>
+        <h2>Craigslist Videogame Search</h2>
         <div class="search_bar">
           <input class="search_input" ng-model="queryString">
-          <button class="search_button" ng-click="searchListings(queryString)">Search</button>
+          <button class="search_button" ng-click="searchListings(queryString)">Go</button>
         </div>
       </section>
     </div>
     <section ng-show="searchResults" class="results_section hidden">
-      <h2>Results</h2>
+      <h2>{{searchResults.length}} {{searchResults.length === 1 ? "Result" : "Results"}}</h2>
       <ul class="results_list">
         <li ng-repeat="result in searchResults">
           <section class="result_section">

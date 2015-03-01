@@ -48,7 +48,7 @@ a {
 }
 
 a:hover {
-  color: #306A30;
+  color: white;
   text-decoration: underline;
 }
 
@@ -108,8 +108,7 @@ section.search_default {
 }
 
 section.search_results {
-  margin-left: 1em;
-  width: 90%;
+  width: 80%;
   max-width: 27.5em;
 }
 
@@ -118,6 +117,7 @@ section.search_results h2 {
 }
 
 div.search_bar {
+  padding-top: 1em;
   max-width: 20em;
   width: 80%;
   margin: auto;
@@ -129,13 +129,23 @@ div.search_bar {
 input.search_input,
 button.search_button {
   float: left;
-  height: 30px;
+  height: 1em;
   background-color: #BDDE14; 
   color: #143815; 
+  border: 1px solid  #266025;
+  font-size: 2em;
+  border-radius: 2px;
+}
+
+input.search_input:focus,
+button.search_button:focus {
+  border: 1px solid white;
+  outline: none;
 }
 
 input.search_input {
-  width: 80%;
+  width: 78%;
+  margin-right: 8px;
 }
 
 button.search_button {
@@ -149,6 +159,9 @@ section.results_section {
 
 section.result_section {
   padding: 1em;
+  border: 10px double #143815;
+  border-radius: 5px; 
+  margin-bottom: 1em;
 }
 
 section.result_section h3 {
